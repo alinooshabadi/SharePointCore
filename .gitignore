@@ -50,6 +50,7 @@ artifacts/
 *.obj
 *.pch
 *.pdb
+*.dll
 *.pgc
 *.pgd
 *.rsp
@@ -67,8 +68,6 @@ artifacts/
 *.svclog
 *.scc
 
-# Chutzpah Test files
-_Chutzpah*
 
 # Visual C++ cache files
 ipch/
