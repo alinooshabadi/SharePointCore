@@ -1,0 +1,5 @@
+c:\users\a.nooshabadi\documents\visual studio 2015\Projects\SharePointCore\SharePointCore\bin\Debug\SharePointCore.dll
+c:\users\a.nooshabadi\documents\visual studio 2015\Projects\SharePointCore\SharePointCore\bin\Debug\SharePointCore.pdb
+c:\users\a.nooshabadi\documents\visual studio 2015\Projects\SharePointCore\SharePointCore\obj\Debug\SharePointCore.csprojResolveAssemblyReference.cache
+c:\users\a.nooshabadi\documents\visual studio 2015\Projects\SharePointCore\SharePointCore\obj\Debug\SharePointCore.dll
+c:\users\a.nooshabadi\documents\visual studio 2015\Projects\SharePointCore\SharePointCore\obj\Debug\SharePointCore.pdb
