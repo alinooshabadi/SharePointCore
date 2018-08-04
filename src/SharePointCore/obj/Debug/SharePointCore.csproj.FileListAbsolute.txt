@@ -3,3 +3,8 @@ c:\users\a.nooshabadi\documents\visual studio 2015\Projects\SharePointCore\Share
 c:\users\a.nooshabadi\documents\visual studio 2015\Projects\SharePointCore\SharePointCore\obj\Debug\SharePointCore.csprojResolveAssemblyReference.cache
 c:\users\a.nooshabadi\documents\visual studio 2015\Projects\SharePointCore\SharePointCore\obj\Debug\SharePointCore.dll
 c:\users\a.nooshabadi\documents\visual studio 2015\Projects\SharePointCore\SharePointCore\obj\Debug\SharePointCore.pdb
+C:\Solutions\SharePointCore\src\SharePointCore\bin\Debug\SharePointCore.dll
+C:\Solutions\SharePointCore\src\SharePointCore\bin\Debug\SharePointCore.pdb
+C:\Solutions\SharePointCore\src\SharePointCore\obj\Debug\SharePointCore.csprojResolveAssemblyReference.cache
+C:\Solutions\SharePointCore\src\SharePointCore\obj\Debug\SharePointCore.dll
+C:\Solutions\SharePointCore\src\SharePointCore\obj\Debug\SharePointCore.pdb

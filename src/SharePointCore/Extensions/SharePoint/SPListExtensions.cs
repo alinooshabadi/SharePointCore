@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharePointCore
+namespace SharePointCore.Extensions.SharePoint
 {
-    public class Class1
+    public static class SPListExtensions
     {
     }
 }
