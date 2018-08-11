@@ -10,10 +10,10 @@ namespace SharePointCore.UI
 {
     public class LayoutsPageBaseCore : LayoutsPageBase
     {
-        public ILogger Logger { get; set; }
+        
         protected override void OnInit(EventArgs e)
         {
-            Logger = new LoggerCore(this.Page);
+            
         }
     }
 }

@@ -9,40 +9,14 @@ namespace SharePointCore.Logging
 {
     public class LoggerCore : ILogger
     {
-        public Page CurrentPage { get; set; }
-        public LoggerCore(Page page)
-        {
-            CurrentPage = page;
-        }
-
-        public void LogToOperations()
+        public void Error(Exception ex)
         {
             throw new NotImplementedException();
         }
 
-        public void LogToOperations(string Message)
+        public void Error(Exception ex, Page page)
         {
-            throw new NotImplementedException();
-        }
-
-        public void LogToOperations(Exception ex)
-        {
-            CurrentPage.Response.Write(ex.Message);
-        }
-
-        public void TraceToDeveloper()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void TraceToDeveloper(string Message)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void TraceToDeveloper(Exception ex)
-        {
-            CurrentPage.Response.Write(ex.Message);
+            page.Response.Write(ex.Message);
         }
     }
 }
