@@ -30,7 +30,6 @@ namespace SharePointCore.Logging
             }
         }
 
-        #region Public Members
 
         #region Error
         /// <summary>
@@ -43,12 +42,12 @@ namespace SharePointCore.Logging
         {
             InitializeLogger();
             _logger.Error(ex, page);
-          
+
         }
 
         #endregion
 
 
-        #endregion
+
     }
 }
