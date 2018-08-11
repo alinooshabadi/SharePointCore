@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharePointCore.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,8 @@ namespace SharePointCore.Logging
         }
 
         public void Error(Exception ex, Page page)
-        {
-            page.Response.Write(ex.Message);
+        {            
+            StatusBar.RenderStatusBar(page, "خطا", ex.Message, false, StatusBar.StatusBarColor.Red);           
         }
     }
 }

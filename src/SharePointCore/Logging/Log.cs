@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharePointCore.UI;
+using System;
 using System.Threading;
 using System.Web.UI;
 
@@ -42,7 +43,7 @@ namespace SharePointCore.Logging
         {
             InitializeLogger();
             _logger.Error(ex, page);
-
+          
         }
 
         #endregion
