@@ -19,5 +19,25 @@ namespace SharePointCore.Logging
         {            
             StatusBar.RenderStatusBar(page, "خطا", ex.Message, false, StatusBar.StatusBarColor.Red);           
         }
+
+        public void Info(string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Info(string message, Page page)
+        {
+            StatusBar.RenderStatusBar(page, "توجه", message, false, StatusBar.StatusBarColor.Blue);
+        }
+
+        public void Warning(string message, Page page)
+        {
+            StatusBar.RenderStatusBar(page, "توجه", message, false, StatusBar.StatusBarColor.Yellow);
+        }
+
+        public void Warning(string message)
+        {
+            //TODO
+        }
     }
 }

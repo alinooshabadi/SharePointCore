@@ -54,7 +54,6 @@
     <Compile Include="Extensions\SharePoint\SPListExtensions.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\Log.cs" />
-    <Compile Include="Logging\LogEntry.cs" />
     <Compile Include="Logging\LoggerCore.cs" />
     <Compile Include="Logging\Monitoring.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

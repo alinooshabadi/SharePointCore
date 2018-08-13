@@ -31,7 +31,7 @@ namespace SharePointCore.Logging
         }
 
 
-        #region Error
+      
         /// <summary>
         /// Logs error message and source
         /// </summary>
@@ -42,11 +42,19 @@ namespace SharePointCore.Logging
         {
             InitializeLogger();
             _logger.Error(ex, page);
-
         }
 
-        #endregion
+        public static void Warning(string message, Page page)
+        {
+            InitializeLogger();
+            _logger.Warning(message, page);
+        }
 
+        public static void Info(string message, Page page)
+        {
+            InitializeLogger();
+            _logger.Info(message, page);
+        }
 
 
     }
