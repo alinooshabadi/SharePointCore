@@ -75,15 +75,9 @@ namespace SharePointCore.UI
         /// <param name="Color"></param>
         public static void RenderStatusBar(Page page, string Title, string Text, bool HideAtBeginning, StatusBarColor Color)
         {
-            //SP.SOD.executeFunc('sp.js', 'SP.ClientContext', function() { });
-            //ExecuteOrDelayUntilScriptLoaded(function() {
-            //    var msId = SP.UI.Status.addStatus('خطا:', 'aa');
-            //    SP.UI.Status.setStatusPriColor(msId, 'red');
-            //}, 'sp.js');
             ScriptLink.RegisterScriptAfterUI(page, "SP.js", false, true);
             var script = string.Format(@"
-               window.onload = function () {{
-                
+               window.onload = function () {{                
                 ExecuteOrDelayUntilScriptLoaded(addStatusBar, 'SP.js');
                 function addStatusBar(){{
                     var sid = SP.UI.Status.addStatus(""{0}"", ""{1}"", {2});
