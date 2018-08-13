@@ -29,8 +29,6 @@ namespace SharePointCore.Logging
                 _logger = new LoggerCore();
             }
         }
-
-
       
         /// <summary>
         /// Logs error message and source
