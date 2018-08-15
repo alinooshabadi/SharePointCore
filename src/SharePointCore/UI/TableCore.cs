@@ -18,7 +18,7 @@ namespace SharePointCore.UI
 
         }
 
-        public Table GenerateTable()
+        public static Table GenerateTable()
         {
             return new Table();
         }
