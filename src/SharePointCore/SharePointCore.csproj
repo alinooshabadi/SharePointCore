@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\General\ControlExtensions.cs" />
     <Compile Include="Extensions\General\StringExtensions.cs" />
     <Compile Include="Extensions\SharePoint\SPListExtensions.cs" />
     <Compile Include="Logging\ILogger.cs" />
@@ -70,7 +71,9 @@
     <Compile Include="UI\StatusBar.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\TableCore.cs" />
+    <Compile Include="UI\HtmlTable\TableCore.cs" />
+    <Compile Include="UI\HtmlTable\TableCellCore.cs" />
+    <Compile Include="UI\HtmlTable\TableRowCore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="alinooshabadi.pfx" />
