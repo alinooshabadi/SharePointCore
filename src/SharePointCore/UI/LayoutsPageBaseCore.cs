@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 namespace SharePointCore.UI
 {
     public class LayoutsPageBaseCore : LayoutsPageBase
-    {
-        
+    {        
         protected override void OnInit(EventArgs e)
         {
             
