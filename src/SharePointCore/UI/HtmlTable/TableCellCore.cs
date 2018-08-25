@@ -9,19 +9,9 @@ namespace SharePointCore.UI.HtmlTable
 {
     public class TableCellCore
     {
-        public string Text { get; set; }
-        public string Url { get; set; }
+        public string Text { get; set; }        
         public string CssClass { get; set; }
-        public Control Control { get; set; }
-
-        public TableCellCore()
-        {
-
-        }
-
-        public TableCellCore(string title)
-        {
-            this.Text = title;
-        }
+        public List<Control> Controls { get; set; }
+       
     }
 }
