@@ -43,19 +43,14 @@ namespace SharePointCore.UI
             ScriptLink.RegisterScriptAfterUI(page, "SP.js", false, true);
             ScriptLink.RegisterScriptAfterUI(page, "SP.Ribbon.js", false, true);
 
-            var script = @"
-                
+            var script = @"                
                 SP.SOD.executeFunc('sp.js', 'SP.ClientContext', function () { });
                 ExecuteOrDelayUntilScriptLoaded(showNotification, 'SP.js');
                 function showNotification(){{
                     " + GetNotificationScript(page, Text, sticky) + @"
                 }}
             ";
-
-
-
-
-            System.Web.UI.ScriptManager.RegisterClientScriptBlock(page, typeof(Notification), string.Format("Notification:{0}", Text), script, true);
+            ScriptManager.RegisterClientScriptBlock(page, typeof(Notification), string.Format("Notification:{0}", Text), script, true);
         }
         /// <summary>
         /// retuns the script code to render a notification
