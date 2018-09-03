@@ -8,7 +8,7 @@ namespace SharePointCore.Logging
     {
         public void Error(Exception ex)
         {
-            throw new NotImplementedException();
+            //TODO
         }
 
         public void Error(Exception ex, Page page)
@@ -18,7 +18,7 @@ namespace SharePointCore.Logging
 
         public void Info(string message)
         {
-            throw new NotImplementedException();
+            //TODO
         }
 
         public void Info(string message, Page page)
