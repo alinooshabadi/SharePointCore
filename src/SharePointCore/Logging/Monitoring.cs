@@ -3,7 +3,6 @@ using System;
 
 namespace SharePointCore.Logging
 {
-
     public static class Monitoring
     {
         public static IDisposable StartHighScope(string name)
