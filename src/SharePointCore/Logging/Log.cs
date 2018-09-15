@@ -27,17 +27,23 @@ namespace SharePointCore.Logging
                 _logger = new LoggerCore();
             }
         }
-      
-        /// <summary>
-        /// Logs error message and source
-        /// </summary>
-        /// <param name="source">Error source</param>
-        /// <param name="message">Error message</param>
-        /// <param name="args">Arguments object</param>
+
+        public static void Error(Exception ex)
+        {
+            InitializeLogger();
+            _logger.Error(ex);
+        }
+
         public static void Error(Exception ex, Page page)
         {
             InitializeLogger();
             _logger.Error(ex, page);
+        }
+
+        public static void Warning(string message)
+        {
+            InitializeLogger();
+            _logger.Warning(message);
         }
 
         public static void Warning(string message, Page page)
@@ -51,7 +57,10 @@ namespace SharePointCore.Logging
             InitializeLogger();
             _logger.Info(message, page);
         }
+    }
 
+    public enum EitModules
+    {
 
     }
 }
