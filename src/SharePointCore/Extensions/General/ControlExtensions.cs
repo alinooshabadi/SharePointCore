@@ -18,9 +18,12 @@ namespace SharePointCore.Extensions.General
         public static TableCellCore ToCellCore(this object obj, string cssClass = "")
         {
             if(obj == null)
-                return new TableCellCore { Text = "" };
+                return new TableCellCore { Text = "-" };
 
             if (obj is string)
+                return new TableCellCore { Text = obj.ToString(), CssClass = cssClass };
+
+            if (obj is int)
                 return new TableCellCore { Text = obj.ToString(), CssClass = cssClass };
 
             if (obj is Control)
