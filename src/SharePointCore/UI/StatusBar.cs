@@ -79,6 +79,7 @@ namespace SharePointCore.UI
                     var sid = SP.UI.Status.addStatus(""{0}"", ""{1}"", {2});
                     {3}
                 }}
+                addStatusBar();
                 }}
             ", Title, Text, (!HideAtBeginning).ToString().ToLower(),
             Color != StatusBarColor.None ? string.Format("SP.UI.Status.setStatusPriColor(sid, '{0}');", Enum.GetName(typeof(StatusBarColor), Color).ToLower()) : "");            
