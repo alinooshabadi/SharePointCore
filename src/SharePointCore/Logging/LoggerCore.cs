@@ -68,8 +68,7 @@ namespace SharePointCore.Logging
 
         public void Info(string message, Page page)
         {
-            StatusBar.RenderStatusBar(page, "توجه", message, false, StatusBar.StatusBarColor.Blue);
-            Info(page.Title + "-" + message);
+            StatusBar.RenderStatusBar(page, "توجه", message, false, StatusBar.StatusBarColor.Blue);            
         }
 
         public void Warning(string message, Page page)
