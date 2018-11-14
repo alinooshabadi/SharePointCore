@@ -10,5 +10,10 @@
         {
             return string.IsNullOrEmpty(instance);
         }
+
+        public static string ToPersianNumbers(this string text)
+        {
+            return text.ToPersianNumbers();
+        }
     }
 }

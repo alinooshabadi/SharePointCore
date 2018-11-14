@@ -43,7 +43,7 @@ namespace SharePointCore.Extensions
             return elapsedTime;
         }
 
-        public static string ToPersainDateString(this DateTime? date)
+        public static string ToPersianDateString(this DateTime? date)
         {
             var pdate = string.Empty;
             if (date.HasValue)
@@ -54,9 +54,19 @@ namespace SharePointCore.Extensions
             return pdate;
         }
 
-        public static string ToPersainDateString(this DateTime date)
+        public static string ToPersianDateString(this DateTime date)
         {
             return date.ToPersianDateTextify();
+        }
+
+        public static string ToPersianDateString(this DateTime date, string format)
+        {
+            return date.ToPersianDateTimeString(format);
+        }
+
+        public static string GetAge(this DateTime date)
+        {
+            return date.GetAge();
         }
     }
 }
