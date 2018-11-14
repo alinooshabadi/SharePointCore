@@ -8,6 +8,61 @@ namespace SharePointCore.Extensions.SharePoint
 {
     public static class SPListItemExtensions
     {
+        public static bool SetGroupPermission(this SPListItem item, string groupName, string permissionLevel)
+        {
+            var isSet = false;
+            try
+            {
+                item.Web.AllowUnsafeUpdates = true;
+                if (!item.HasUniqueRoleAssignments)
+                {
+                    item.BreakRoleInheritance(false, false);
+                }
+                item.Update();
+                item.Web.Update();
+
+                var roleAssignment = new SPRoleAssignment(item.Web.SiteGroups[groupName]);
+                roleAssignment.RoleDefinitionBindings.Add(item.Web.RoleDefinitions[permissionLevel]);
+                item.RoleAssignments.Add(roleAssignment);
+                item.Update();
+                item.Web.Update();
+                isSet = true;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+            }
+            return isSet;
+        }
+
+        public static bool SetUserPermission(this SPListItem item, string userName, string permissionLevel)
+        {
+            var isSet = false;
+            try
+            {
+                item.Web.AllowUnsafeUpdates = true;
+                if (!item.HasUniqueRoleAssignments)
+                {
+                    item.BreakRoleInheritance(false, false);
+                }
+                item.Update();
+                item.Web.Update();
+
+                var roleAssignment = new SPRoleAssignment(item.Web.AllUsers[userName]);
+                roleAssignment.RoleDefinitionBindings.Add(item.Web.RoleDefinitions[permissionLevel]);
+                item.RoleAssignments.Add(roleAssignment);
+                item.Update();
+                item.ParentList.Update();
+                item.Web.Update();
+                isSet = true;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+            }
+            return isSet;
+        }
+
         public static string TryGetFieldValue(this SPListItem listItem, string fieldName)
         {
             var fieldValue = string.Empty;
@@ -17,8 +72,8 @@ namespace SharePointCore.Extensions.SharePoint
                 {
                     if ((listItem.ParentList.TryGetField(fieldName) as SPFieldLookup).AllowMultipleValues)
                     {
-                        var spflvc = new SPFieldLookupValueCollection(listItem[fieldName].ToStringSafe());
-                        var values = string.Join(", ", spflvc.Select(x => x.LookupValue).ToArray());
+                        var lookupValue = new SPFieldLookupValueCollection(listItem[fieldName].ToStringSafe());
+                        var values = string.Join(", ", lookupValue.Select(x => x.LookupValue).ToArray());
 
                         fieldValue = values;
                     }
@@ -89,61 +144,6 @@ namespace SharePointCore.Extensions.SharePoint
                 Log.Error(ex);
             }
             return lookupId;
-        }
-
-        public static bool SetGroupPermission(this SPListItem item, string groupName, string permissionLevel)
-        {
-            var isSet = false;
-            try
-            {
-                item.Web.AllowUnsafeUpdates = true;
-                if (!item.HasUniqueRoleAssignments)
-                {
-                    item.BreakRoleInheritance(false, false);
-                }
-                item.Update();
-                item.Web.Update();
-
-                var roleAssignment = new SPRoleAssignment(item.Web.SiteGroups[groupName]);
-                roleAssignment.RoleDefinitionBindings.Add(item.Web.RoleDefinitions[permissionLevel]);
-                item.RoleAssignments.Add(roleAssignment);
-                item.Update();
-                item.Web.Update();
-                isSet = true;
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex);
-            }
-            return isSet;
-        }
-
-        public static bool SetUserPermission(this SPListItem item, string userName, string permissionLevel)
-        {
-            var isSet = false;
-            try
-            {
-                item.Web.AllowUnsafeUpdates = true;
-                if (!item.HasUniqueRoleAssignments)
-                {
-                    item.BreakRoleInheritance(false, false);
-                }
-                item.Update();
-                item.Web.Update();
-
-                var roleAssignment = new SPRoleAssignment(item.Web.AllUsers[userName]);
-                roleAssignment.RoleDefinitionBindings.Add(item.Web.RoleDefinitions[permissionLevel]);
-                item.RoleAssignments.Add(roleAssignment);
-                item.Update();
-                item.ParentList.Update();
-                item.Web.Update();
-                isSet = true;
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex);
-            }
-            return isSet;
         }
     }
 }
