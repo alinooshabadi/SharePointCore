@@ -10,6 +10,7 @@ namespace SharePointCore.Extensions.SharePoint
     {
         public static string TryGetFieldValue(this SPListItem listItem, string fieldName)
         {
+            var fieldValue = string.Empty;
             try
             {
                 if (listItem.ParentList.TryGetField(fieldName).Type == SPFieldType.Lookup)
@@ -19,11 +20,11 @@ namespace SharePointCore.Extensions.SharePoint
                         var spflvc = new SPFieldLookupValueCollection(listItem[fieldName].ToStringSafe());
                         var values = string.Join(", ", spflvc.Select(x => x.LookupValue).ToArray());
 
-                        return values;
+                        fieldValue = values;
                     }
                     else
                     {
-                        return new SPFieldLookupValue(listItem[fieldName].ToStringSafe()).LookupValue;
+                        fieldValue = new SPFieldLookupValue(listItem[fieldName].ToStringSafe()).LookupValue;
                     }
                 }
                 else if (listItem.ParentList.TryGetField(fieldName).Type == SPFieldType.User)
@@ -33,11 +34,11 @@ namespace SharePointCore.Extensions.SharePoint
                         var spflvc = new SPFieldLookupValueCollection(listItem[fieldName].ToStringSafe());
                         var values = string.Join(", ", spflvc.Select(x => x.LookupValue).ToArray());
 
-                        return values;
+                        fieldValue = values;
                     }
                     else
                     {
-                        return new SPFieldLookupValue(listItem[fieldName].ToStringSafe()).LookupValue;
+                        fieldValue = new SPFieldLookupValue(listItem[fieldName].ToStringSafe()).LookupValue;
                     }
                 }
                 else if (listItem.ParentList.TryGetField(fieldName).Type == SPFieldType.MultiChoice)
@@ -54,67 +55,45 @@ namespace SharePointCore.Extensions.SharePoint
                 {
                     var cf = (SPFieldCalculated)listItem.Fields[fieldName];
                     var value = cf.GetFieldValueForEdit(listItem[fieldName]);
-                    return value;
+                    fieldValue = value;
                 }
                 else
                 {
-                    return listItem[fieldName].ToStringSafe();
+                    fieldValue = listItem[fieldName].ToStringSafe();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                return string.Empty;
+                Log.Error(ex);
             }
+            return fieldValue;
         }
 
         public static int TryGetLookupId(this SPListItem listItemName, string fieldName)
         {
+            var lookupId = 0;
             try
             {
                 if (listItemName.ParentList.TryGetField(fieldName).Type == SPFieldType.Lookup && listItemName.TryGetFieldValue(fieldName) != null)
                 {
                     var fieldLookupValue = new SPFieldLookupValue(listItemName[listItemName.ParentList.TryGetField(fieldName).Id].ToStringSafe());
-                    return fieldLookupValue.LookupId;
+                    lookupId = fieldLookupValue.LookupId;
                 }
                 else
                 {
-                    return 0;
+                    lookupId = 0;
                 }
-            }
-            catch
-            {
-                return 0;
-            }
-        }
-
-        public static bool SetGroupPermission(this SPListItem item, string groupName, string permissionLevel)
-        {
-            try
-            {
-                item.Web.AllowUnsafeUpdates = true;
-                if (!item.HasUniqueRoleAssignments)
-                {
-                    item.BreakRoleInheritance(false, false);
-                }
-                item.Update();
-                item.Web.Update();
-
-                var roleAssignment = new SPRoleAssignment((SPPrincipal)item.Web.SiteGroups[groupName]);
-                roleAssignment.RoleDefinitionBindings.Add(item.Web.RoleDefinitions[permissionLevel]);
-                item.RoleAssignments.Add(roleAssignment);
-                item.Update();
-                item.Web.Update();
-                return true;
             }
             catch (Exception ex)
             {
                 Log.Error(ex);
-                return false;
             }
+            return lookupId;
         }
 
-        public static bool SetUserPermission(this SPListItem item, string userName, string permissionLevel)
+        public static bool SetGroupPermission(this SPListItem item, string groupName, string permissionLevel)
         {
+            var isSet = false;
             try
             {
                 item.Web.AllowUnsafeUpdates = true;
@@ -125,20 +104,46 @@ namespace SharePointCore.Extensions.SharePoint
                 item.Update();
                 item.Web.Update();
 
-                var roleAssignment = new SPRoleAssignment((SPPrincipal)item.Web.AllUsers[userName]);
+                var roleAssignment = new SPRoleAssignment(item.Web.SiteGroups[groupName]);
+                roleAssignment.RoleDefinitionBindings.Add(item.Web.RoleDefinitions[permissionLevel]);
+                item.RoleAssignments.Add(roleAssignment);
+                item.Update();
+                item.Web.Update();
+                isSet = true;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+            }
+            return isSet;
+        }
+
+        public static bool SetUserPermission(this SPListItem item, string userName, string permissionLevel)
+        {
+            var isSet = false;
+            try
+            {
+                item.Web.AllowUnsafeUpdates = true;
+                if (!item.HasUniqueRoleAssignments)
+                {
+                    item.BreakRoleInheritance(false, false);
+                }
+                item.Update();
+                item.Web.Update();
+
+                var roleAssignment = new SPRoleAssignment(item.Web.AllUsers[userName]);
                 roleAssignment.RoleDefinitionBindings.Add(item.Web.RoleDefinitions[permissionLevel]);
                 item.RoleAssignments.Add(roleAssignment);
                 item.Update();
                 item.ParentList.Update();
                 item.Web.Update();
-                return true;
+                isSet = true;
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                Log.Error(ex);
             }
+            return isSet;
         }
-
-
     }
 }
