@@ -56,6 +56,8 @@
   <ItemGroup>
     <Compile Include="Extensions\General\ControlExtensions.cs" />
     <Compile Include="Extensions\General\StringExtensions.cs" />
+    <Compile Include="Extensions\SharePoint\ObjectExtensions.cs" />
+    <Compile Include="Extensions\SharePoint\SPListItemExtensions.cs" />
     <Compile Include="Extensions\SharePoint\SPListExtensions.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\Log.cs" />
