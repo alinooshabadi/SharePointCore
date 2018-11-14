@@ -14,13 +14,13 @@ namespace SharePointCore.Extensions
             SPField field = null;
             try
             {
-                if (list.Fields.ContainsField(fieldName))
+                if (list.Fields.ContainsFieldWithStaticName(fieldName))
                 {
-                    field = list.Fields[fieldName];
+                    field = list.Fields.GetFieldByInternalName(fieldName);
                 }
                 else
                 {
-                    field = list.Fields.GetFieldByInternalName(fieldName);
+                    field = list.Fields[fieldName];
                 }
             }
             catch (Exception ex)
