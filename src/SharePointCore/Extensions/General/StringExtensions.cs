@@ -1,4 +1,4 @@
-﻿namespace SharePointCore.Extensions.General
+﻿namespace SharePointCore.Extensions
 {
     public static class StringExtensions
     {

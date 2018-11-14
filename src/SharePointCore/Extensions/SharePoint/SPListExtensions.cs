@@ -4,7 +4,7 @@ using System;
 using System.Globalization;
 using System.Threading;
 
-namespace SharePointCore.Extensions.SharePoint
+namespace SharePointCore.Extensions
 {
     public static class SPListExtensions
     {

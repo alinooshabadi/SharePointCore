@@ -1,4 +1,4 @@
-﻿namespace SharePointCore.Extensions.SharePoint
+﻿namespace SharePointCore.Extensions
 {
     public static class ObjectExtensions
     {

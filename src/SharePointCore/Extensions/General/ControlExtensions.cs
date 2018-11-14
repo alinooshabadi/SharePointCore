@@ -5,7 +5,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
-namespace SharePointCore.Extensions.General
+namespace SharePointCore.Extensions
 {
     public static class ControlExtensions
     {
@@ -17,7 +17,7 @@ namespace SharePointCore.Extensions.General
 
         public static TableCellCore ToCellCore(this object obj, string cssClass = "")
         {
-            if(obj == null)
+            if (obj == null)
                 return new TableCellCore { Text = "-" };
 
             if (obj is string)
@@ -43,6 +43,12 @@ namespace SharePointCore.Extensions.General
             }
 
             return new TableCellCore();
+        }
+
+        public static IEnumerable<Control> FlattenChildren(this Control control)
+        {
+            var children = control.Controls.Cast<Control>();
+            return children.SelectMany(c => FlattenChildren(c)).Concat(children);
         }
     }
 }

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SharePointCore.Extensions.SharePoint
+namespace SharePointCore.Extensions
 {
     public static class SPListItemExtensions
     {
@@ -73,7 +73,7 @@ namespace SharePointCore.Extensions.SharePoint
                     if ((listItem.ParentList.TryGetField(fieldName) as SPFieldLookup).AllowMultipleValues)
                     {
                         var lookupValue = new SPFieldLookupValueCollection(listItem[fieldName].ToStringSafe());
-                        var values = string.Join(", ", lookupValue.Select(x => x.LookupValue).ToArray());
+                        var values = lookupValue.Select(x => x.LookupValue).ToArray().ToListString();
 
                         fieldValue = values;
                     }
@@ -86,8 +86,8 @@ namespace SharePointCore.Extensions.SharePoint
                 {
                     if ((listItem.ParentList.TryGetField(fieldName) as SPFieldUser).AllowMultipleValues)
                     {
-                        var spflvc = new SPFieldLookupValueCollection(listItem[fieldName].ToStringSafe());
-                        var values = string.Join(", ", spflvc.Select(x => x.LookupValue).ToArray());
+                        var lookupValue = new SPFieldLookupValueCollection(listItem[fieldName].ToStringSafe());
+                        var values = lookupValue.Select(x => x.LookupValue).ToArray().ToListString();
 
                         fieldValue = values;
                     }
@@ -104,7 +104,7 @@ namespace SharePointCore.Extensions.SharePoint
                     {
                         chiocesList.Add(choices[i]);
                     }
-                    return string.Join(", ", chiocesList.ToArray());
+                    return chiocesList.ToArray().ToListString();
                 }
                 else if (listItem.ParentList.TryGetField(fieldName).Type == SPFieldType.Calculated)
                 {

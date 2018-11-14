@@ -41,8 +41,13 @@
     <AssemblyOriginatorKeyFile>AliNooshabadi.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DNTPersianUtils.Core, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\EIT.SP.MeetingManagement\packages\DNTPersianUtils.Core.3.1.0\lib\net45\DNTPersianUtils.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -55,6 +60,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\General\ControlExtensions.cs" />
+    <Compile Include="Extensions\General\DatetimeExtensions.cs" />
+    <Compile Include="Extensions\General\EnumerableExtensiosn.cs" />
+    <Compile Include="Extensions\General\NumberExtensiosns.cs" />
     <Compile Include="Extensions\General\StringExtensions.cs" />
     <Compile Include="Extensions\SharePoint\ObjectExtensions.cs" />
     <Compile Include="Extensions\SharePoint\SPListItemExtensions.cs" />
@@ -76,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AliNooshabadi.pfx" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
