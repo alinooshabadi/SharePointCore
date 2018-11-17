@@ -64,6 +64,11 @@ namespace SharePointCore.Extensions
             return date.ToPersianDateTimeString(format);
         }
 
+        public static string ToRelativeTime(this DateTime date)
+        {
+            return date.ToFriendlyPersianDateTextify();
+        }
+
         public static string GetAge(this DateTime date)
         {
             return DateTimeUtils.GetAge(date).ToString();
