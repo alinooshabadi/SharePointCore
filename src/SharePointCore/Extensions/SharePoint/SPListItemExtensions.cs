@@ -1,4 +1,5 @@
 ﻿using Microsoft.SharePoint;
+using Microsoft.SharePoint.Utilities;
 using SharePointCore.Logging;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,13 @@ namespace SharePointCore.Extensions
 {
     public static class SPListItemExtensions
     {
+        public static IEnumerable<string> GetAttachmentUrls(this SPListItem item)
+        {
+            return from string fileName in item.Attachments
+                   orderby fileName
+                   select SPUrlUtility.CombineUrl(item.Attachments.UrlPrefix, fileName);
+        }
+
         public static bool SetGroupPermission(this SPListItem item, string groupName, string permissionLevel)
         {
             var isSet = false;
