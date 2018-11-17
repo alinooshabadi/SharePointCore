@@ -11,13 +11,12 @@ namespace SharePointCore.UI.HtmlTable
             var table = new Table();
             foreach (var row in Rows.Select((value, i) => new { i, value }))
             {
-                var tRow = new TableRow();
+                var tRow = new TableRow { CssClass = row.value.CssClass };
                 if (HasIndexCell)
                 {
-                    var indexCell = new TableCell { Text = (row.i+1).ToString() };
+                    var indexCell = new TableCell { Text = (row.i + 1).ToString() };
                     tRow.Cells.Add(indexCell);
                 }
-
 
                 foreach (TableCellCore cell in row.value.Cells)
                 {
