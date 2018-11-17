@@ -39,6 +39,7 @@ namespace SharePointCore.Extensions
             catch (Exception ex)
             {
                 Log.Error(ex);
+                throw new Exception($"SharePointCore: Error on {nameof(SetGroupPermission)}", ex);
             }
             return isSet;
         }
@@ -67,6 +68,7 @@ namespace SharePointCore.Extensions
             catch (Exception ex)
             {
                 Log.Error(ex);
+                throw new Exception($"SharePointCore: Error on {nameof(SetUserPermission)}", ex);
             }
             return isSet;
         }
@@ -128,6 +130,7 @@ namespace SharePointCore.Extensions
             catch (Exception ex)
             {
                 Log.Error(ex);
+                throw new Exception($"SharePointCore: Error on {nameof(TryGetFieldValue)}", ex);
             }
             return fieldValue;
         }
@@ -150,6 +153,7 @@ namespace SharePointCore.Extensions
             catch (Exception ex)
             {
                 Log.Error(ex);
+                throw new Exception($"SharePointCore: Error on {nameof(TryGetLookupId)}", ex);
             }
             return lookupId;
         }
