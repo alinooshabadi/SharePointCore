@@ -1,4 +1,7 @@
-﻿namespace SharePointCore.Extensions
+﻿using DNTPersianUtils.Core;
+
+namespace SharePointCore.Extensions
+
 {
     public static class StringExtensions
     {
@@ -11,7 +14,7 @@
             return string.IsNullOrEmpty(instance);
         }
 
-        public static string ToPersianNumbers(this string text)
+        public static string ToPersianNumber(this string text)
         {
             return text.ToPersianNumbers();
         }

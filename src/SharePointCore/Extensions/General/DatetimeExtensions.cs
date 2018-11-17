@@ -66,7 +66,12 @@ namespace SharePointCore.Extensions
 
         public static string GetAge(this DateTime date)
         {
-            return date.GetAge();
+            return DateTimeUtils.GetAge(date).ToString();
+        }
+
+        public static DateTime? ToGregorianDateTime(this string date)
+        {
+            return PersianDateTimeUtils.ToGregorianDateTime(date);
         }
     }
 }
