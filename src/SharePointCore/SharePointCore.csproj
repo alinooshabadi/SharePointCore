@@ -65,6 +65,7 @@
     <Compile Include="Extensions\General\NumberExtensiosns.cs" />
     <Compile Include="Extensions\General\StringExtensions.cs" />
     <Compile Include="Extensions\SharePoint\ObjectExtensions.cs" />
+    <Compile Include="Extensions\SharePoint\PageBaseExtensions.cs" />
     <Compile Include="Extensions\SharePoint\SPFieldExtensions.cs" />
     <Compile Include="Extensions\SharePoint\SPListItemExtensions.cs" />
     <Compile Include="Extensions\SharePoint\SPListExtensions.cs" />
