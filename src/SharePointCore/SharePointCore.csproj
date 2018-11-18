@@ -45,7 +45,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\DNTPersianUtils.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.SharePoint, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -65,8 +65,10 @@
     <Compile Include="Extensions\General\NumberExtensiosns.cs" />
     <Compile Include="Extensions\General\StringExtensions.cs" />
     <Compile Include="Extensions\SharePoint\ObjectExtensions.cs" />
+    <Compile Include="Extensions\SharePoint\SPFieldExtensions.cs" />
     <Compile Include="Extensions\SharePoint\SPListItemExtensions.cs" />
     <Compile Include="Extensions\SharePoint\SPListExtensions.cs" />
+    <Compile Include="Extensions\SharePoint\SPWebExtensions.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\Log.cs" />
     <Compile Include="Logging\LoggerCore.cs" />
