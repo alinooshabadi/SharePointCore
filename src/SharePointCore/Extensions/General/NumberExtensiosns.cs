@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DNTPersianUtils.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,6 +27,11 @@ namespace SharePointCore.Extensions
         public static double Round(this double target, int decimals)
         {
             return Math.Round(target, decimals);
+        }
+
+        public static string ToPersianNumber(this double text)
+        {
+            return text.ToStringSafe().ToPersianNumbers();
         }
     }
 }
