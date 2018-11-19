@@ -20,8 +20,10 @@ namespace SharePointCore.Extensions
             contentPlaceHolder.Controls.Clear();
 
             // Put your content in
-            var literalControl = new LiteralControl();
-            literalControl.Text = title;
+            var literalControl = new LiteralControl
+            {
+                Text = title
+            };
             contentPlaceHolder.Controls.Add(literalControl);
         }
     }

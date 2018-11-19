@@ -17,12 +17,13 @@ namespace SharePointCore.Extensions
         {
             SPList list = null;
             try
-            {                
-                list= web.Lists[listName];
+            {
+                list = web.Lists[listName];
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Log.Error(ex);
+                throw new Exception($"SharePointCore: Error on {nameof(TryGetList)}", ex);
             }
             return list;
         }
@@ -30,7 +31,7 @@ namespace SharePointCore.Extensions
         public static SPList EnsureList(this SPWeb web, string displayName, string internalName)
         {
             SPList list = null;
-            CultureInfo originalUICulture = Thread.CurrentThread.CurrentUICulture;
+            var originalUICulture = Thread.CurrentThread.CurrentUICulture;
 
             if (SPContext.Current == null)
             {
@@ -54,27 +55,31 @@ namespace SharePointCore.Extensions
 
         public static SPGroup TryGetGroup(this SPWeb web, string groupName)
         {
+            SPGroup group = null;
             try
             {
-                return web.SiteGroups[groupName];
+                group = web.SiteGroups[groupName];
             }
-            catch
+            catch (Exception ex)
             {
-                return null;
+                Log.Error(ex);
+                throw new Exception($"SharePointCore: Error on {nameof(TryGetGroup)}", ex);
             }
+            return group;
         }
-     
+
         public static SPUser TryGetUser(this SPWeb web, string userName)
         {
             SPUser user = null;
             try
             {
-                SPPrincipalInfo info = SPUtility.ResolvePrincipal(web, userName, SPPrincipalType.User, SPPrincipalSource.All, web.SiteUsers, false);
+                var info = SPUtility.ResolvePrincipal(web, userName, SPPrincipalType.User, SPPrincipalSource.All, web.SiteUsers, false);
                 user = web.SiteUsers[info.LoginName];
             }
             catch (Exception ex)
             {
-                user = null;
+                Log.Error(ex);
+                throw new Exception($"SharePointCore: Error on {nameof(TryGetUser)}", ex);
             }
 
             return user;
@@ -86,19 +91,19 @@ namespace SharePointCore.Extensions
             {
                 SPSecurity.RunWithElevatedPrivileges(delegate ()
                 {
-                    SPRoleDefinition roleDefinition = web.ParentWeb.RoleDefinitions[roleDefinitionName];
+                    var roleDefinition = web.ParentWeb.RoleDefinitions[roleDefinitionName];
 
-                    SPRoleAssignment roleAssignment = new SPRoleAssignment(principal);
+                    var roleAssignment = new SPRoleAssignment(principal);
                     roleAssignment.RoleDefinitionBindings.Add(roleDefinition);
                     web.RoleAssignments.Add(roleAssignment);
                     web.Update();
                 });
             }
             catch (Exception ex)
-            { 
+            {
                 Log.Error(ex);
+                throw new Exception($"SharePointCore: Error on {nameof(SetPermission)}", ex);
             }
         }
-
     }
 }

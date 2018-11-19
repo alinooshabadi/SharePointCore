@@ -2,40 +2,26 @@
 {
     public static class ObjectExtensions
     {
-        public static string ToStringSafe(this object inString)
+        public static string ToStringSafe(this object obj)
         {
-            try
-            {
-                return inString.ToString();
-            }
-            catch
-            {
+            if (obj == null)
                 return string.Empty;
-            }
+
+            return obj.ToString();
         }
 
         public static double ToDouble(this object input)
         {
-            try
-            {
-                return double.Parse(input.ToStringSafe());
-            }
-            catch
-            {
-                return 0;
-            }
+            double output = 0;
+            double.TryParse(input.ToStringSafe(), out output);
+            return output;
         }
 
         public static int ToInt(this object input)
         {
-            try
-            {
-                return int.Parse(input.ToStringSafe());
-            }
-            catch
-            {
-                return 0;
-            }
+            var output = 0;
+            int.TryParse(input.ToStringSafe(), out output);
+            return output;
         }
     }
 }

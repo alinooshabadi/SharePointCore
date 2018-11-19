@@ -16,7 +16,7 @@ namespace SharePointCore.Extensions
         {
             try
             {
-                CultureInfo originalUICulture = Thread.CurrentThread.CurrentUICulture;
+                var originalUICulture = Thread.CurrentThread.CurrentUICulture;
                 SPSecurity.RunWithElevatedPrivileges(delegate ()
                 {
                     if (SPContext.Current == null)
