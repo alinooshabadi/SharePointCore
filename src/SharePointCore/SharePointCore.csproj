@@ -81,9 +81,9 @@
     <Compile Include="UI\StatusBar.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\HtmlTable\TableCore.cs" />
-    <Compile Include="UI\HtmlTable\TableCellCore.cs" />
-    <Compile Include="UI\HtmlTable\TableRowCore.cs" />
+    <Compile Include="UI\HtmlTableCore\TableCore.cs" />
+    <Compile Include="UI\HtmlTableCore\TableCellCore.cs" />
+    <Compile Include="UI\HtmlTableCore\TableRowCore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AliNooshabadi.pfx" />

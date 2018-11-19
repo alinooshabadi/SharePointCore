@@ -20,18 +20,15 @@ namespace SharePointCore.UI.HtmlTable
 
                 foreach (TableCellCore cell in row.value.Cells)
                 {
-                    if (cell != null)
+                    var tCell = new TableCell
                     {
-                        var tCell = new TableCell
-                        {
-                            Text = cell.Text,
-                            CssClass = cell.CssClass
-                        };
-                        if (cell.Controls != null && cell.Controls.Any())
-                            cell.Controls.ForEach(x => tCell.Controls.Add(x));
+                        Text = cell?.Text,
+                        CssClass = cell?.CssClass
+                    };
+                    if (cell != null && cell.Controls != null && cell.Controls.Any())
+                        cell.Controls.ForEach(x => tCell.Controls.Add(x));
 
-                        tRow.Cells.Add(tCell);
-                    }
+                    tRow.Cells.Add(tCell);
                 }
                 table.Rows.Add(tRow);
             }
