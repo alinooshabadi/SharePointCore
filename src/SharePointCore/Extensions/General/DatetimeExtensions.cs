@@ -64,6 +64,17 @@ namespace SharePointCore.Extensions
             return date.ToPersianDateTimeString(format);
         }
 
+        public static string ToPersianDateString(this DateTime? date, string format)
+        {
+            var pdate = string.Empty;
+            if (date.HasValue)
+            {
+                return date.Value.ToPersianDateTimeString(format);
+            }
+
+            return pdate;
+        }
+
         public static string ToRelativeTime(this DateTime date)
         {
             return date.ToFriendlyPersianDateTextify();
