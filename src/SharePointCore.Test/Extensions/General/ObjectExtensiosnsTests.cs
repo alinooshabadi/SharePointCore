@@ -30,7 +30,7 @@ namespace SharePointCore.Extensions.Tests
         [Test()]
         public void ToDouble_BadValue_ReturnsZero()
         {
-            string input = "12/d3";
+            string input = "12/d3$$%";
             var actual = input.ToDouble();
             Assert.AreEqual(actual, 0);
         }
