@@ -24,7 +24,7 @@ namespace SharePointCore.Extensions
             return string.Join(" و ", parts);
         }
 
-        public static double Round(this double target, int decimals)
+        public static double Round(this double target, int decimals = 2)
         {
             return Math.Round(target, decimals);
         }
