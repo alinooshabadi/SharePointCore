@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace SharePointCore.Extensions.Tests
 {
-    [TestFixture()]
+    [TestFixture]
     public class ObjectExtensiosnsTests
     {
-        [Test()]
+        [Test]
         public void ToStringSafe_NullObject_ReturnsStringEmpty()
         {
             string input = null;
@@ -22,7 +22,7 @@ namespace SharePointCore.Extensions.Tests
         [Test()]
         public void ToStringSafe_IntegerValue_ReturnsString()
         {
-            string input = "123";
+            var input = "123";
             var actual = input.ToStringSafe();
             Assert.AreEqual(actual, "123");
         }
@@ -30,7 +30,7 @@ namespace SharePointCore.Extensions.Tests
         [Test()]
         public void ToDouble_BadValue_ReturnsZero()
         {
-            string input = "12/d3$$%";
+            var input = "12/d3$$%";
             var actual = input.ToDouble();
             Assert.AreEqual(actual, 0);
         }
@@ -38,7 +38,7 @@ namespace SharePointCore.Extensions.Tests
         [Test()]
         public void ToDouble_StringDoublealue_ReturnsDoubleValue()
         {
-            string input = "123.456";
+            var input = "123.456";
             var actual = input.ToDouble();
             Assert.AreEqual(actual, 123.456);
         }
@@ -46,7 +46,7 @@ namespace SharePointCore.Extensions.Tests
         [Test()]
         public void ToInt_BadValue_ReturnsZero()
         {
-            string input = "12/d3";
+            var input = "12/d3";
             var actual = input.ToInt();
             Assert.AreEqual(actual, 0);
         }
