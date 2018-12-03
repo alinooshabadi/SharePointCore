@@ -30,7 +30,7 @@ namespace SharePointCore.Test.Extensions.General
         [Test]
         public void ToNumericFormat_DoubleString_ReturnsNumericDouble()
         {
-            var input = "1123442.0345655";
+            var input = "11442.034555";
             var actual = input.ToNumericFormat();
             Assert.AreEqual(actual, "1,123,442.034,565,5");
         }
