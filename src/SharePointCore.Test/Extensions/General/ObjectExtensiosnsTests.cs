@@ -22,9 +22,9 @@ namespace SharePointCore.Extensions.Tests
         [Test()]
         public void ToStringSafe_IntegerValue_ReturnsString()
         {
-            var input = "123";
+            var input = "1234567890";
             var actual = input.ToStringSafe();
-            Assert.AreEqual(actual, "123");
+            Assert.AreEqual(actual, "1234567890");
         }
 
         [Test()]
